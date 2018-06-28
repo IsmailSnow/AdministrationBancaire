@@ -1,0 +1,58 @@
+<div style="background-image: url('/assets/images/bg-01.jpg'); position: absolute;top:0;bottom:0;right:0;left:0;">
+<div class="inscription col s8 offset-s2" style="margin-left:auto;margin-right: auto; margin-top: 100px;width: 380px">
+      <div class="card grey lighten-1">
+        <div class="card-tabs">
+          <ul class="tabs tabs-fixed-width tabs-transparent">
+            <li class="tab">
+              <a routerLink='/login' routerLinkActive='active' >Sign In</a>
+            </li>
+            <li class="tab">
+              <a  routerLink='/sign-up' routerLinkActive='active' style="font-size: 16px;">Sign Up</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-content white">
+          <div class="row">
+          <router-outlet></router-outlet>
+          <form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)" style="margin-bottom: -10px">    
+             <div class="row">
+                <div class="input-field col s6">
+                     <input class="validate" type="text" name="UserName" #UserName="ngModel" [(ngModel)]="user.UserName" required>
+                     <label data-error="Required field!">UserName</label>
+                 </div>
+               <div class="input-field col s6">
+            <input class="validate" type="password" name="Password" #Password="ngModel" [(ngModel)]="user.Password" required minlength="3">
+            <label [attr.data-error]="Password.errors!=null?(Password.errors.required?'Required field!':'Minimum 3 characters needed'):''">Password</label>
+            </div>
+         </div>
+             <div class="row">
+               <div class="input-field col s6">
+                 <input class="validate" type="text" name="Email" #Email="ngModel" [(ngModel)]="user.Email" [pattern]="emailPattern">
+                 <label data-error="Invalid email!">Email</label>
+               </div>
+             </div>
+             <div class="from-control" style="width: 100%;background-color: red">
+                   <my-date-picker name="mydate" [options]="myDatePickerOptions" 
+                   #BirthDay="ngModel" [(ngModel)]="model.BirthDay" required></my-date-picker>
+             </div>
+            <div class="row">
+            <div class="input-field col s6">
+             <input type="text" name="FirstName" #FirstName="ngModel" [(ngModel)]="user.FirstName">
+             <label>First Name</label>
+           </div>
+           <div class="input-field col s6">
+             <input type="text" name="LastName" #LastName="ngModel" [(ngModel)]="user.LastName">
+                <label>Last Name</label>
+                 </div>
+             </div>
+             <div class="row">
+              <div class="input-field col s12">
+              <button [disabled]="!userRegistrationForm.valid" class="btn-large btn-submit" type="submit" style="margin-bottom: -50px; width: 100%">Submit</button>
+            </div>
+           </div>
+         </form>
+       </div>
+    </div>
+   </div>
+  </div>
+  </div>

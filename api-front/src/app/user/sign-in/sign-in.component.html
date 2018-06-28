@@ -1,0 +1,50 @@
+<div style="background-image: url('/assets/images/bg-01.jpg'); position: absolute;top:0;bottom:0;right:0;left:0;">
+<div class="login col s8 offset-s2" style="margin-left: auto;margin-right: auto; margin-top:100px;width: 400px">
+      <div class="card grey lighten-1">
+        <div class="card-tabs">
+          <ul class="tabs tabs-fixed-width tabs-transparent">
+            <li class="tab">
+              <a routerLink='/login' routerLinkActive='active' style="font-size: 16px;">Sign In</a>
+            </li>
+            <li class="tab">
+              <a  routerLink='/sign-up' routerLinkActive='active'>Sign Up</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-content white">
+          <div class="row">
+            <router-outlet></router-outlet>
+     <div class="col s8 offset-s2" style=" margin-right:auto;margin-left:auto;width: 100%">
+      <div class="card grey lighten-2">
+       <div *ngIf="isLoginError" class="red-text center error-message">
+       <i class="material-icons">error</i> Incorrect username or password
+      </div>
+       <form #loginForm="ngForm" class="col s12 white" (ngSubmit)="OnSubmit(UserName.value,Password.value)">
+         <div class="row">
+            <div class="input-field col s12">
+            <i class="material-icons prefix">account_circle</i>
+            <input type="text" #UserName ngModel name="UserName" placeholder="Username" required>
+            </div>
+        </div>
+         <div class="row">
+           <div class="input-field col s12">
+          <i class="material-icons prefix">vpn_key</i>
+          <input type="password" #Password ngModel name="Password" placeholder="Password" required>
+           </div>
+        </div>
+         <div class="row">
+         <div class="input-field col s12">
+          <button  class="btn-large btn-submit" type="submit" style="width: 100% ; margin-bottom: -50px">Login</button>
+        </div>
+      </div>
+       </form>
+      </div>
+    </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+
+
+
